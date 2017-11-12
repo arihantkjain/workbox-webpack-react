@@ -12,12 +12,18 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.0",
+    "apollo-client": "^2.0.2",
+    "apollo-link-http": "^1.1.0",
     "babel-preset-latest": "^6.24.1",
     "compression": "^1.7.1",
     "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-tag": "^2.5.0",
     "invariant": "^2.2.2",
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
+    "react-apollo": "^2.0.1",
     "react-dom": "^16.1.0",
     "react-redux": "^5.0.6",
     "react-router-config": "^1.0.0-beta.4",

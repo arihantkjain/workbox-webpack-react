@@ -3,7 +3,13 @@ import path from 'path'
 
 
 const vendors = [
+  'apollo-cache-inmemory',
+  'apollo-client',
+  'apollo-link-http',
+  'graphql',
+  'graphql-tag',
   'react',
+  'react-apollo',
   'react-dom',
   'react-redux',
   'react-router-dom',
