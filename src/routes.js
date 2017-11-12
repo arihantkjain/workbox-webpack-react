@@ -3,6 +3,8 @@ import Counter from 'pages/Counter'
 import {
   ListPosts,
   PostDetail,
+  PostCreate,
+  PostEdit,
 } from 'pages/Blog'
 import App from './app'
 
@@ -19,6 +21,14 @@ export default [
       {
         path: '/counter',
         component: Counter,
+      },
+      {
+        path: '/posts/edit/:postId',
+        component: PostEdit,
+      },
+      {
+        path: '/posts/create',
+        component: PostCreate,
       },
       {
         path: '/posts/:postId',
