@@ -28,24 +28,12 @@ export default {
       manifest: dllManifest,
     }),
     new HtmlWebpackPlugin({
-      template: 'src/_tpl/index.html',
+      template: 'src/static/index.html',
       inject: 'body',
       filename: 'index.html',
     }),
     new CopyWebpackPlugin([
-      { from: path.resolve(__dirname, '..', SRC_DIR, '_tpl', 'favicon.ico'), to: 'favicon.ico' },
-      {
-        from: path.resolve(__dirname, '..', SRC_DIR, '_tpl', 'icon-192x192.png'),
-        to: 'icon-192x192.png',
-      },
-      {
-        from: path.resolve(__dirname, '..', SRC_DIR, '_tpl', 'icon-512x512.png'),
-        to: 'icon-512x512.png',
-      },
-      {
-        from: path.resolve(__dirname, '..', SRC_DIR, '_tpl', 'manifest.json'),
-        to: 'manifest.json',
-      },
+      { from: path.resolve(__dirname, '..', SRC_DIR, 'static', 'favicon.ico'), to: 'favicon.ico' },
     ]),
   ],
   module: {
