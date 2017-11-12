@@ -15,7 +15,6 @@ const vendors = [
   'react-router-dom',
   'recompose',
   'redux',
-  'redux-thunk',
 ]
 
 module.exports = {
