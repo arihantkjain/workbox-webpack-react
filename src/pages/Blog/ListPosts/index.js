@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'recompose'
 import { graphql } from 'react-apollo'
 import List from 'modules/blog/components/PostsList'
 import { queryAllPosts } from 'modules/blog/qql'
 import { Spinner, Error } from 'components'
 
 
-export const ListPosts = ({ data: { loading, error, allPosts } }) => {
+export const ListPostsPage = ({ data: { loading, error, allPosts } }) => {
   if (loading) {
     return <Spinner />
   }
@@ -23,7 +24,7 @@ export const ListPosts = ({ data: { loading, error, allPosts } }) => {
   )
 }
 
-ListPosts.propTypes = {
+ListPostsPage.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.shape({
@@ -36,6 +37,6 @@ ListPosts.propTypes = {
   }).isRequired,
 }
 
-const ListPostsWithGraphQL = graphql(queryAllPosts, {})(ListPosts)
+const enhance = compose(graphql(queryAllPosts, {}))
 
-export default ListPostsWithGraphQL
+export default enhance(ListPostsPage)

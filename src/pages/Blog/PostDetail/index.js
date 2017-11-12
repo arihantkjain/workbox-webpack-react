@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'recompose'
 import { graphql } from 'react-apollo'
 import { queryPostDetail } from 'modules/blog/qql'
 import { Spinner, Error } from 'components'
 
 
-export const PostsBaseContainer = ({ data: { loading, error, Post } }) => {
+export const PostDetailPage = ({ data: { loading, error, Post } }) => {
   if (loading) {
     return <Spinner />
   }
@@ -22,7 +23,7 @@ export const PostsBaseContainer = ({ data: { loading, error, Post } }) => {
   )
 }
 
-PostsBaseContainer.propTypes = {
+PostDetailPage.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.shape({
@@ -41,12 +42,12 @@ PostsBaseContainer.propTypes = {
   }),
 }
 
-const PostsBaseContainerWithGraphQL = graphql(queryPostDetail, {
+const enhance = compose(graphql(queryPostDetail, {
   options: ownProps => ({
     variables: {
       id: ownProps.match.params.postId,
     },
   }),
-})(PostsBaseContainer)
+}))
 
-export default PostsBaseContainerWithGraphQL
+export default enhance(PostDetailPage)
