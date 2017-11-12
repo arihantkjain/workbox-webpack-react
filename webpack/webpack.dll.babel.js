@@ -15,6 +15,7 @@ const vendors = [
   'react-router-dom',
   'recompose',
   'redux',
+  'redux-form',
 ]
 
 module.exports = {
