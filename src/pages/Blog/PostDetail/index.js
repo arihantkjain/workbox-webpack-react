@@ -27,7 +27,7 @@ PostsBaseContainer.propTypes = {
     loading: PropTypes.bool,
     error: PropTypes.shape({
       message: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
     Post: PropTypes.shape({
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,

@@ -26,7 +26,9 @@ export const ListPosts = ({ data: { loading, error, allPosts } }) => {
 ListPosts.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
-    error: PropTypes.object,
+    error: PropTypes.shape({
+      message: PropTypes.string.isRequired,
+    }),
     allPosts: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
