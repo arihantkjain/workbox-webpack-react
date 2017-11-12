@@ -13,6 +13,7 @@ const vendors = [
   'react-dom',
   'react-redux',
   'react-router-dom',
+  'recompose',
   'redux',
   'redux-thunk',
 ]
