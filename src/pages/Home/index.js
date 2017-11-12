@@ -22,7 +22,8 @@ const HomePage = () => (
         target="_blank"
         rel="noopener noreferrer"
         href="https://github.com/developer239/workbox-webpack-react"
-      > https://github.com/developer239/workbox-webpack-react</a>
+      > https://github.com/developer239/workbox-webpack-react
+      </a>
     </p>
   </section>
 )

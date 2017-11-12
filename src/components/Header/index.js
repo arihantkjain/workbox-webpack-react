@@ -8,6 +8,7 @@ const Header = () => (
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/counter">Redux Counter</Link></li>
+        <li><Link to="/posts">GraphQl Blog</Link></li>
       </ul>
     </nav>
   </header>
