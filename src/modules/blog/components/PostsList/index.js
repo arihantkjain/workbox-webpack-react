@@ -7,7 +7,7 @@ import { Button } from 'components'
 
 
 export const PostListComponent = ({ items, client }) => {
-  const prefetchDetail = postId => client.query({ // eslint-disable-line
+  const prefetchDetail = postId => () => client.query({ // eslint-disable-line
     query: queryPostDetail,
     variables: { id: postId },
   })
@@ -19,7 +19,12 @@ export const PostListComponent = ({ items, client }) => {
           <h3>{item.title}</h3>
           <p>{item.text}</p>
           <Link to={`/posts/${item.id}`}>
-            <Button>Detail</Button>
+            <Button
+              onFocus={prefetchDetail(item.id)}
+              onMouseOver={prefetchDetail(item.id)}
+            >
+              Detail
+            </Button>
           </Link>
         </div>
       ))}

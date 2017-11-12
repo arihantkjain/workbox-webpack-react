@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-const ButtonComponent = ({ children }) => (
-  <button>
+const ButtonComponent = ({ children, ...rest }) => (
+  <button {...rest}>
     {children}
   </button>
 )
