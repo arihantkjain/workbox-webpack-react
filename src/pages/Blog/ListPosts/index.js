@@ -2,27 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { graphql } from 'react-apollo'
+import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 import List from 'modules/blog/components/PostsList'
 import { queryAllPosts } from 'modules/blog/qql'
-import { Spinner, Error } from 'components'
 
 
-export const ListPostsPage = ({ data: { loading, error, allPosts } }) => {
-  if (loading) {
-    return <Spinner />
-  }
-
-  if (error) {
-    return <Error message={error.message} />
-  }
-
-  return (
-    <div>
-      <h2>All posts</h2>
-      <List items={allPosts} />
-    </div>
-  )
-}
+export const ListPostsPage = ({ data: { allPosts } }) => (
+  <div>
+    <h2>All posts</h2>
+    <List items={allPosts} />
+  </div>
+)
 
 ListPostsPage.propTypes = {
   data: PropTypes.shape({
@@ -37,6 +27,10 @@ ListPostsPage.propTypes = {
   }).isRequired,
 }
 
-const enhance = compose(graphql(queryAllPosts, {}))
+const enhance = compose(
+  graphql(queryAllPosts, {}),
+  showApolloError(),
+  showSpinnerWhileApolloLoading(),
+)
 
 export default enhance(ListPostsPage)

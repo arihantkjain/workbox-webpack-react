@@ -3,25 +3,15 @@ import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { graphql } from 'react-apollo'
 import { queryPostDetail } from 'modules/blog/qql'
-import { Spinner, Error } from 'components'
+import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 
 
-export const PostDetailPage = ({ data: { loading, error, Post } }) => {
-  if (loading) {
-    return <Spinner />
-  }
-
-  if (error) {
-    return <Error message={error.message} />
-  }
-
-  return (
-    <div>
-      <h2>{Post.title}</h2>
-      <p>{Post.text}</p>
-    </div>
-  )
-}
+export const PostDetailPage = ({ data: { Post } }) => (
+  <div>
+    <h2>{Post.title}</h2>
+    <p>{Post.text}</p>
+  </div>
+)
 
 PostDetailPage.propTypes = {
   data: PropTypes.shape({
@@ -42,12 +32,16 @@ PostDetailPage.propTypes = {
   }),
 }
 
-const enhance = compose(graphql(queryPostDetail, {
-  options: ownProps => ({
-    variables: {
-      id: ownProps.match.params.postId,
-    },
+const enhance = compose(
+  graphql(queryPostDetail, {
+    options: ownProps => ({
+      variables: {
+        id: ownProps.match.params.postId,
+      },
+    }),
   }),
-}))
+  showApolloError(),
+  showSpinnerWhileApolloLoading(),
+)
 
 export default enhance(PostDetailPage)

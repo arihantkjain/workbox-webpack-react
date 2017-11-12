@@ -2,14 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-const Error = ({ message }) => (
+const Error = ({ data }) => (
   <div>
-    {message}
+    {data.error.message}
   </div>
 )
 
 Error.propTypes = {
-  message: PropTypes.string,
+  data: PropTypes.shape({
+    error: PropTypes.shape({
+      message: PropTypes.string,
+    }),
+  }),
 }
 
 export default Error
