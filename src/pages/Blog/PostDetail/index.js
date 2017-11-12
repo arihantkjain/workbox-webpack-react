@@ -5,19 +5,19 @@ import { queryPostDetail } from 'modules/blog/qql'
 import { Spinner, Error } from 'components'
 
 
-export const PostsBaseContainer = ({ data }) => {
-  if (data.loading) {
+export const PostsBaseContainer = ({ data: { loading, error, Post } }) => {
+  if (loading) {
     return <Spinner />
   }
 
-  if (data.error) {
-    return <Error data={data.error} />
+  if (error) {
+    return <Error message={error.message} />
   }
 
   return (
     <div>
-      <h2>{data.Post.title}</h2>
-      <p>{data.Post.text}</p>
+      <h2>{Post.title}</h2>
+      <p>{Post.text}</p>
     </div>
   )
 }
@@ -25,7 +25,9 @@ export const PostsBaseContainer = ({ data }) => {
 PostsBaseContainer.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
-    error: PropTypes.object,
+    error: PropTypes.shape({
+      message: PropTypes.string.isRequired,
+    }).isRequired,
     Post: PropTypes.shape({
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,

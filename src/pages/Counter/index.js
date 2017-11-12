@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { incrementCounter, decrementCounter } from 'modules/counter/ducks'
+import { selectCounterValue } from 'modules/counter/selectors'
 
 
-export const CounterContainer = ({ increment, decrement, counterValue }) => (
+export const CounterPage = ({ increment, decrement, counterValue }) => (
   <section>
     <h2>Redux Counter</h2>
     <p>
@@ -20,14 +21,14 @@ export const CounterContainer = ({ increment, decrement, counterValue }) => (
   </section>
 )
 
-CounterContainer.propTypes = {
+CounterPage.propTypes = {
   increment: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
   counterValue: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = state => ({
-  counterValue: state.counter.value,
+  counterValue: selectCounterValue(state),
 })
 
 const mapDispatchToProps = {
@@ -38,4 +39,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CounterContainer)
+)(CounterPage)

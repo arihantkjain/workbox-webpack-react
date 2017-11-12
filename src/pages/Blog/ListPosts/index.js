@@ -6,19 +6,19 @@ import { queryAllPosts } from 'modules/blog/qql'
 import { Spinner, Error } from 'components'
 
 
-export const ListPosts = ({ data }) => {
-  if (data.loading) {
+export const ListPosts = ({ data: { loading, error, allPosts } }) => {
+  if (loading) {
     return <Spinner />
   }
 
-  if (data.error) {
-    return <Error data={data.error} />
+  if (error) {
+    return <Error message={error.message} />
   }
 
   return (
     <div>
       <h2>All posts</h2>
-      <List items={data.allPosts} />
+      <List items={allPosts} />
     </div>
   )
 }
