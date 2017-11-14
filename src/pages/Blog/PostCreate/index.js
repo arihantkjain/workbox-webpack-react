@@ -24,10 +24,14 @@ const enhance = compose(
   graphql(createPost),
   withHandlers({
     handleOnSubmit: ({ history, mutate }) =>
-      data =>
-        mutate({ variables: data })
-          .then(response => history.push(`/posts/${response.data.createPost.id}`))
-          .catch(() => global.alert('There was an error while creating your post.')),
+      async (data) => {
+        try {
+          const response = await mutate({ variables: data })
+          history.push(`/posts/${response.data.createPost.id}`)
+        } catch (e) {
+          global.alert('There was an error while creating your post.')
+        }
+      },
   }),
 )
 
