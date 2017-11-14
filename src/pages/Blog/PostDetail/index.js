@@ -1,19 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'recompose'
+import { compose, withHandlers } from 'recompose'
 import { graphql } from 'react-apollo'
-import { queryPostDetail } from 'modules/blog/qql'
+import { queryPostDetail, deletePost } from 'modules/blog/qql'
+import { Button } from 'components'
 import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 
 
-export const PostDetailPage = ({ data: { Post } }) => (
+export const PostDetailPage = ({ handleDeletePost, data: { Post } }) => (
   <div>
     <h2>{Post.title}</h2>
     <p>{Post.text}</p>
+    <Button onClick={handleDeletePost}>Delete Post</Button>
   </div>
 )
 
 PostDetailPage.propTypes = {
+  handleDeletePost: PropTypes.func.isRequired,
   data: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.shape({
@@ -33,12 +36,20 @@ PostDetailPage.propTypes = {
 }
 
 const enhance = compose(
+  graphql(deletePost, { name: 'deletePostMutation' }),
   graphql(queryPostDetail, {
     options: ownProps => ({
       variables: {
         id: ownProps.match.params.postId,
       },
     }),
+  }),
+  withHandlers({
+    handleDeletePost: ({ history, deletePostMutation, match }) =>
+      () =>
+        deletePostMutation({ variables: { id: match.params.postId } })
+          .then(() => history.push('/posts'))
+          .catch(() => global.alert('There was an error while deleting your post.')),
   }),
   showApolloError(),
   showSpinnerWhileApolloLoading(),

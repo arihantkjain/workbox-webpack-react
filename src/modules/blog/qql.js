@@ -28,3 +28,11 @@ export const createPost = gql`
     }
   }
 `
+
+export const deletePost = gql`
+  mutation deletePost($id: ID!) {
+    deletePost(id: $id) {
+      id
+    }
+  }
+`
