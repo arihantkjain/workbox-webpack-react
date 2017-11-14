@@ -8,10 +8,10 @@ import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 
 
 const PostEditPage = ({ handleOnSubmit, data: { Post } }) => (
-  <div>
+  <section>
     <h2>Update Posts</h2>
     <PostForm initialValues={Post} onSubmit={handleOnSubmit} />
-  </div>
+  </section>
 )
 
 PostEditPage.propTypes = {

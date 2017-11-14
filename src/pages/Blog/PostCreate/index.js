@@ -7,10 +7,10 @@ import { createPost } from 'modules/blog/qql'
 
 
 const PostCreatePage = ({ handleOnSubmit }) => (
-  <div>
+  <section>
     <h2>Create Posts</h2>
     <PostForm onSubmit={handleOnSubmit} />
-  </div>
+  </section>
 )
 
 PostCreatePage.propTypes = {

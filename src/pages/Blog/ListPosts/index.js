@@ -9,11 +9,11 @@ import { queryAllPosts } from 'modules/blog/qql'
 
 
 export const ListPostsPage = ({ data: { allPosts } }) => (
-  <div>
+  <section>
     <h2>All posts</h2>
     <Link to="/posts/create">Create New Post</Link>
     <List items={allPosts} />
-  </div>
+  </section>
 )
 
 ListPostsPage.propTypes = {

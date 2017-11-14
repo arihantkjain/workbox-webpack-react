@@ -9,12 +9,12 @@ import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 
 
 export const PostDetailPage = ({ match, handleDeletePost, data: { Post } }) => (
-  <div>
+  <section>
     <h2>{Post.title}</h2>
     <p>{Post.text}</p>
     <Button onClick={handleDeletePost}>Delete Post</Button>
     <Link to={`/posts/${match.params.postId}/edit`}><Button>Edit Post</Button></Link>
-  </div>
+  </section>
 )
 
 PostDetailPage.propTypes = {
