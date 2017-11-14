@@ -18,3 +18,13 @@ export const queryPostDetail = gql`query PostDetail($id: ID!){
   }
 }
 `
+
+export const createPost = gql`
+  mutation createPost($title: String!, $text: String!) {
+    createPost(title: $title, text: $text) {
+      id
+      title
+      text
+    }
+  }
+`

@@ -12,16 +12,17 @@ const PostForm = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <Field name="id" component="input" type="hidden" />
-    <Field name="title" component="input" type="text" />
-    <Field name="text" component="textarea" />
+    Title: <br />
+    <Field name="title" component="input" type="text" /> <br />
+    Text: <br />
+    <Field name="text" component="textarea" /> <br />
 
-    <Button type="submit" bsStyle="primary" disabled={submitting}>
+    <Button type="submit" disabled={submitting}>
       {submitting ? 'Saving...' : 'Save changes'}
     </Button>
     {!!handleDelete &&
     <Button
       type="button"
-      bsStyle="danger"
       disabled={isDeleting}
       onClick={handleDelete}
     >

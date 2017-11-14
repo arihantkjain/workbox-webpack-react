@@ -30,7 +30,7 @@ ListPostsPage.propTypes = {
 }
 
 const enhance = compose(
-  graphql(queryAllPosts, {}),
+  graphql(queryAllPosts),
   showApolloError(),
   showSpinnerWhileApolloLoading(),
 )
