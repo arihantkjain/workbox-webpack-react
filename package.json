@@ -1,7 +1,10 @@
 {
-  "name": "workbox-webpack-react",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "React-Redux-Apollo-GraphQL-Hot-Boilerplate",
+  "version": "3.0.0",
+  "author": {
+    "name": "Michal Jarnot",
+    "email": "m.jarnot@yahoo.com"
+  },
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.babel.js",
@@ -59,11 +62,21 @@
     "webpack-merge": "^4.1.1"
   },
   "keywords": [
+    "apollo-cache-inmemory",
+    "apollo-client",
+    "apollo-link-http",
+    "compression",
     "express",
+    "graphql",
+    "graphql-tag",
+    "invariant",
     "heroku",
     "prop-types",
     "react",
+    "recompose",
     "redux",
+    "redux-form",
+    "react-redux",
     "webpack",
     "babel",
     "eslint"
