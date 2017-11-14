@@ -24,7 +24,7 @@ export default [
         component: Counter,
       },
       {
-        path: '/posts/edit/:postId',
+        path: '/posts/:postId/edit',
         component: PostEdit,
       },
       {
