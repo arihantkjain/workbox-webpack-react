@@ -15,6 +15,7 @@ const PostCreatePage = ({ handleOnSubmit }) => (
 
 PostCreatePage.propTypes = {
   handleOnSubmit: PropTypes.func.isRequired,
+  mutate: PropTypes.func.isRequired, // eslint-disable-line
   history: PropTypes.shape({ // eslint-disable-line
     push: PropTypes.func.isRequired,
   }).isRequired,
