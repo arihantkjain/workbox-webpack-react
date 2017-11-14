@@ -1,5 +1,6 @@
 import Home from 'pages/Home'
 import Counter from 'pages/Counter'
+import NotFound from 'pages/NotFound'
 import {
   ListPosts,
   PostDetail,
@@ -37,6 +38,10 @@ export default [
       {
         path: '/posts',
         component: ListPosts,
+      },
+      {
+        path: '*',
+        component: NotFound,
       },
     ],
   },
