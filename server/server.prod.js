@@ -4,7 +4,7 @@ const compression = require('compression')
 const invariant = require('invariant')
 
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 const DIST_DIR = path.resolve(__dirname, '..', 'public')
 
 const app = express()
