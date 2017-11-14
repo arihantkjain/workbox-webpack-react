@@ -33,6 +33,7 @@ PostEditPage.propTypes = {
   }).isRequired,
 }
 
+// TODO: Add no post branch
 const enhance = compose(
   graphql(updatePost, { name: 'updatePostMutation' }),
   graphql(queryPostDetail, {

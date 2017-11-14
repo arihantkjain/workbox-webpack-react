@@ -29,6 +29,7 @@ ListPostsPage.propTypes = {
   }).isRequired,
 }
 
+// TODO: Add no posts branch
 const enhance = compose(
   graphql(queryAllPosts),
   showApolloError(),

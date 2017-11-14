@@ -37,6 +37,7 @@ PostDetailPage.propTypes = {
   }),
 }
 
+// TODO: Add no post branch
 const enhance = compose(
   graphql(deletePost, { name: 'deletePostMutation' }),
   graphql(queryPostDetail, {
