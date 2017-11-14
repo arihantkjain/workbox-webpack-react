@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { compose, withHandlers } from 'recompose'
 import { graphql } from 'react-apollo'
 import { queryPostDetail, deletePost } from 'modules/blog/qql'
@@ -7,11 +8,12 @@ import { Button } from 'components'
 import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 
 
-export const PostDetailPage = ({ handleDeletePost, data: { Post } }) => (
+export const PostDetailPage = ({ match, handleDeletePost, data: { Post } }) => (
   <div>
     <h2>{Post.title}</h2>
     <p>{Post.text}</p>
     <Button onClick={handleDeletePost}>Delete Post</Button>
+    <Link to={`/posts/${match.params.postId}/edit`}><Button>Edit Post</Button></Link>
   </div>
 )
 
@@ -28,7 +30,7 @@ PostDetailPage.propTypes = {
       text: PropTypes.string.isRequired,
     }),
   }).isRequired,
-  math: PropTypes.shape({ // eslint-disable-line
+  match: PropTypes.shape({ // eslint-disable-line
     params: PropTypes.shape({
       postId: PropTypes.string,
     }),
