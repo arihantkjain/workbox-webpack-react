@@ -3,7 +3,7 @@ import React from 'react'
 
 const NoData = () => (
   <div>
-    No data in database. :( :(
+    No data in database.
   </div>
 )
 

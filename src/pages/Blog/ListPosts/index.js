@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { compose } from 'recompose'
 import { graphql } from 'react-apollo'
-import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
+import { showSpinnerWhileApolloLoading, showApolloError, showNoData } from 'common/helpers'
 import List from 'modules/blog/components/PostsList'
 import { queryAllPosts } from 'modules/blog/qql'
 
@@ -34,6 +34,7 @@ const enhance = compose(
   graphql(queryAllPosts),
   showApolloError(),
   showSpinnerWhileApolloLoading(),
+  showNoData(props => !props.data.allPosts),
 )
 
 export default enhance(ListPostsPage)

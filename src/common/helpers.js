@@ -1,5 +1,5 @@
 import { branch, renderComponent } from 'recompose'
-import { Spinner, Error } from 'components'
+import { Spinner, Error, NoData } from 'components'
 
 
 export const showSpinnerWhileLoading = isLoading =>
@@ -11,11 +11,17 @@ export const showSpinnerWhileLoading = isLoading =>
 export const showSpinnerWhileApolloLoading = () =>
   showSpinnerWhileLoading(props => props.data.loading)
 
-export const showError = error =>
+export const showError = isError =>
   branch(
-    error,
+    isError,
     renderComponent(Error),
   )
 
 export const showApolloError = () =>
   showError(props => props.data.error)
+
+export const showNoData = isNoData =>
+  branch(
+    isNoData,
+    renderComponent(NoData),
+  )

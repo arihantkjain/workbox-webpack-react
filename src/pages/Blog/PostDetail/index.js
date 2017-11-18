@@ -5,7 +5,7 @@ import { compose, withHandlers } from 'recompose'
 import { graphql } from 'react-apollo'
 import { queryPostDetail, deletePost, queryAllPosts } from 'modules/blog/qql'
 import { Button } from 'components'
-import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
+import { showSpinnerWhileApolloLoading, showApolloError, showNoData } from 'common/helpers'
 
 
 export const PostDetailPage = ({ match, handleDeletePost, data: { Post } }) => (
@@ -59,6 +59,7 @@ const enhance = compose(
   }),
   showApolloError(),
   showSpinnerWhileApolloLoading(),
+  showNoData(props => !props.data.Post),
 )
 
 export default enhance(PostDetailPage)

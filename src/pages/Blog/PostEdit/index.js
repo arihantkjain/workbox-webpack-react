@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import PostForm from 'modules/blog/forms/Post'
 import { compose, withHandlers } from 'recompose'
 import { queryPostDetail, updatePost, queryAllPosts } from 'modules/blog/qql'
-import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
+import { showSpinnerWhileApolloLoading, showApolloError, showNoData } from 'common/helpers'
 
 
 const PostEditPage = ({ handleOnSubmit, data: { Post } }) => (
@@ -55,6 +55,7 @@ const enhance = compose(
   }),
   showApolloError(),
   showSpinnerWhileApolloLoading(),
+  showNoData(props => !props.data.Post),
 )
 
 export default enhance(PostEditPage)
