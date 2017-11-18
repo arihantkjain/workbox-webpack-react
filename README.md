@@ -32,7 +32,9 @@ __Uses:__
   
  Project files are generated into the `/public` folder using `yarn build` command.
  
- Use `yarn prod` command in order to start the app. This command will build static files and start express server.
+ 1) Use `yarn build` in order to build the static files.
+ 
+ 2) Use `yarn prod` command in order to start the app. This will start express server.
  
  #### Code Quality Tools
  
