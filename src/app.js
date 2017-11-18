@@ -11,16 +11,11 @@ const App = ({ route }) => (
       links={[
         {
           id: 1,
-          label: 'Home',
-          href: '/',
-        },
-        {
-          id: 2,
           label: 'Redux Counter',
           href: '/counter',
         },
         {
-          id: 3,
+          id: 2,
           label: 'GraphQl Blog',
           href: '/posts',
         },

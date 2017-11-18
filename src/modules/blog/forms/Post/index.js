@@ -28,7 +28,7 @@ const PostForm = ({ handleSubmit, submitting }) => (
     <Field name="id" component="input" type="hidden" />
     <Field name="title" component={TitleInput} type="text" />
     <Field name="text" component={TextTextArea} />
-    <Button type="submit" disabled={submitting}>
+    <Button type="submit" disabled={submitting} bsStyle="success">
       {submitting ? 'Submitting...' : 'Submit changes'}
     </Button>
   </form>
