@@ -2,7 +2,7 @@
 
 Updated version of the old apollo graphql boilerplate. This one is cleaner and functional. I used boilerplate code from my [workbox-webpack-react](https://github.com/developer239/workbox-webpack-react) but I got rid of the [PWA](https://developers.google.com/web/progressive-web-apps/) aspects because progressive websites are little bit confusing for new developers.
 
-[Try it here](https://workbox-webpack-react-pwa-app.herokuapp.com) (it might take a while before the free server wakes up)
+[Try it here](https://react-redux-apollo-graphql.herokuapp.com/) (it might take a while before the free server wakes up)
 
 __Uses:__
 
