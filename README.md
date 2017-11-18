@@ -1,17 +1,17 @@
-# Hot Workbox Webpack Express React Redux PWA
+# React Redux Apollo GraphQL Hot Boilerplate 2.0
 
-Progressive web app that takes advantage of new technologies to bring the best of mobile sites & native apps to users.
+Updated version of the old apollo graphql boilerplate. This version is functional and a lot cleaner. I used boilerplate code from my [workbox-webpack-react](https://github.com/developer239/workbox-webpack-react) but I got rid of the [PWA](https://developers.google.com/web/progressive-web-apps/) functionality because progressive websites are little bit confusing for new developers.
 
 [Try it here](https://workbox-webpack-react-pwa-app.herokuapp.com) (it might take a while before the free server wakes up)
 
 __Uses:__
 
- * Workbox
- * Express
- * Webpack
- * React
- * React Router
- * Redux
+ * [React Apollo](https://github.com/apollographql/react-apollo) 2.0.2
+ * [React](https://github.com/facebook/react) 16.0.1
+ * [React Router](https://github.com/ReactTraining/react-router) 4.2.2
+ * [Recompose](https://github.com/acdlite/recompose) 0.26.0
+ * [Redux](https://github.com/reactjs/redux) 3.7.2
+ * [Webpack](https://github.com/webpack/webpack) 3.8.1
 
 #### Installing the project
  
@@ -37,23 +37,11 @@ __Uses:__
  #### Code Quality Tools
  
  * .editorconfig
- * eslint
- * airbnb
+ * [eslint](https://github.com/eslint/eslint) 4.11.0
+ * [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) 16.1.0
 
 #### Other tips
-
-* This app works offline thanks to service workers. If you have any problems with production changes. Don't forget to kill old service workers. In `chrome development tools -> application -> Clear Storage -> Clear Site Data`. Users will see updates on every `n + 1` visit. 
 
 * This app is heroku ready. You have to set `heroku config:set NPM_CONFIG_PRODUCTION=false` on your heroku server. Everything else is prepared. `Procfile` will run `yarn prod` command.
 
 * New npm dependencies should be added into the `vendors` array in `/webpack/webpack.dll.babel.js`. Dll file with vendor libraries is generated after every `yarn install`. This makes webpack builds a lot faster.
-
-#### Lighthouse
-
-![lighthouse score](https://preview.ibb.co/myjS4Q/lighthouse.png)
-
-
- * 100 % progressive web app
- * 73 % performance *(this is mostly because of missing server side rendering)*
- * 100 % accessibility
- * 92 % best practices *(missing http2)*
