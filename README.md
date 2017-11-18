@@ -47,3 +47,8 @@ __Uses:__
 * This app is heroku ready. You have to set `heroku config:set NPM_CONFIG_PRODUCTION=false` on your heroku server. Everything else is prepared. `Procfile` will run `yarn prod` command.
 
 * New npm dependencies should be added into the `vendors` array in `/webpack/webpack.dll.babel.js`. Dll file with vendor libraries is generated after every `yarn install`. This makes webpack builds a lot faster.
+
+## To do
+
+- [ ] Write unit tests with at least 80% coverage
+- [ ] Add [nightwatch](https://github.com/nightwatchjs/nightwatch) in order to support E2E testing
