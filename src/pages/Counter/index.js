@@ -1,22 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Grid, PageHeader } from 'react-bootstrap'
 import { incrementCounter, decrementCounter } from 'modules/counter/ducks'
 import { selectCounterValue } from 'modules/counter/selectors'
+import { Button } from 'components'
 
 
 export const CounterPage = ({ increment, decrement, counterValue }) => (
-  <section>
-    <h2>Redux Counter</h2>
-    <p>
-      Minimal example redux implementation.
-    </p>
+  <Grid>
+    <PageHeader>Redux Counter</PageHeader>
     <p>
       Current counter value is: <strong>{counterValue}</strong>
     </p>
-    <button onClick={increment}>Increment</button>
-    <button onClick={decrement}>Decrement</button>
-  </section>
+    <Button onClick={increment}>Increment</Button>
+    <Button onClick={decrement}>Decrement</Button>
+  </Grid>
 )
 
 CounterPage.propTypes = {

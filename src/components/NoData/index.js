@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Grid } from 'react-bootstrap'
 
 
 const NoData = ({ message }) => (
-  <div>
+  <Grid>
     {message}
-  </div>
+  </Grid>
 )
 
 NoData.propTypes = {

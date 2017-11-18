@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
+import { Grid, PageHeader } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import PostForm from 'modules/blog/forms/Post'
 import { compose, withHandlers } from 'recompose'
@@ -7,10 +8,10 @@ import { createPost, queryAllPosts } from 'modules/blog/qql'
 
 
 const PostCreatePage = ({ handleOnSubmit }) => (
-  <section>
-    <h2>Create Posts</h2>
+  <Grid>
+    <PageHeader>Create Posts</PageHeader>
     <PostForm onSubmit={handleOnSubmit} />
-  </section>
+  </Grid>
 )
 
 PostCreatePage.propTypes = {

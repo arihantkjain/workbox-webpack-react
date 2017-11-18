@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Grid } from 'react-bootstrap'
 
 
 const Error = ({ data }) => (
-  <div>
+  <Grid>
     {data.error.message}
-  </div>
+  </Grid>
 )
 
 Error.propTypes = {

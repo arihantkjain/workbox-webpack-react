@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Grid, PageHeader } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { compose, withHandlers } from 'recompose'
 import { graphql } from 'react-apollo'
@@ -9,12 +10,12 @@ import { showSpinnerWhileApolloLoading, showApolloError, showNoData } from 'comm
 
 
 export const PostDetailPage = ({ match, handleDeletePost, data: { Post } }) => (
-  <section>
-    <h2>{Post.title}</h2>
+  <Grid>
+    <PageHeader>{Post.title}</PageHeader>
     <p>{Post.text}</p>
-    <Button onClick={handleDeletePost}>Delete Post</Button>
+    <Button bsStyle="danger" onClick={handleDeletePost}>Delete Post</Button>
     <Link to={`/posts/${match.params.postId}/edit`}><Button>Edit Post</Button></Link>
-  </section>
+  </Grid>
 )
 
 PostDetailPage.propTypes = {
@@ -37,7 +38,6 @@ PostDetailPage.propTypes = {
   }),
 }
 
-// TODO: Add no post branch
 const enhance = compose(
   graphql(deletePost, { name: 'deletePostMutation' }),
   graphql(queryPostDetail, {

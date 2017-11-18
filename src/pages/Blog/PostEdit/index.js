@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
+import { Grid, PageHeader } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import PostForm from 'modules/blog/forms/Post'
 import { compose, withHandlers } from 'recompose'
@@ -8,10 +9,10 @@ import { showSpinnerWhileApolloLoading, showApolloError, showNoData } from 'comm
 
 
 const PostEditPage = ({ handleOnSubmit, data: { Post } }) => (
-  <section>
-    <h2>Update Posts</h2>
+  <Grid>
+    <PageHeader>Update Posts</PageHeader>
     <PostForm initialValues={Post} onSubmit={handleOnSubmit} />
-  </section>
+  </Grid>
 )
 
 PostEditPage.propTypes = {
@@ -33,7 +34,6 @@ PostEditPage.propTypes = {
   }).isRequired,
 }
 
-// TODO: Add no post branch
 const enhance = compose(
   graphql(updatePost, { name: 'updatePostMutation' }),
   graphql(queryPostDetail, {

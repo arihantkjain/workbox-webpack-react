@@ -1,20 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { reduxForm, Field } from 'redux-form'
-import { Button } from 'components'
+import { TextInput, TextArea, Button } from 'components'
+import validate from './validate'
 
 
-const PostForm = ({
-  handleSubmit,
-  submitting,
-}) => (
+const TitleInput = componentProps => (
+  <TextInput
+    label="Post Title"
+    componentProps={componentProps}
+    type="text"
+    placeholder="Title"
+  />
+)
+
+const TextTextArea = componentProps => (
+  <TextArea
+    label="Description"
+    componentProps={componentProps}
+    type="text"
+    placeholder="Description"
+  />
+)
+
+const PostForm = ({ handleSubmit, submitting }) => (
   <form onSubmit={handleSubmit}>
     <Field name="id" component="input" type="hidden" />
-    Title: <br />
-    <Field name="title" component="input" type="text" /> <br />
-    Text: <br />
-    <Field name="text" component="textarea" /> <br />
-
+    <Field name="title" component={TitleInput} type="text" />
+    <Field name="text" component={TextTextArea} />
     <Button type="submit" disabled={submitting}>
       {submitting ? 'Submitting...' : 'Submit changes'}
     </Button>
@@ -28,4 +41,5 @@ PostForm.propTypes = {
 
 export default reduxForm({
   form: 'post',
+  validate,
 })(PostForm)

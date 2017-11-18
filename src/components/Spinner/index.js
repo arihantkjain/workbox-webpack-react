@@ -1,10 +1,11 @@
 import React from 'react'
+import { Grid } from 'react-bootstrap'
 
 
 const Spinner = () => (
-  <div>
+  <Grid>
     Loading...
-  </div>
+  </Grid>
 )
 
 export default Spinner

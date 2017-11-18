@@ -1,17 +1,41 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
 
 
-const Header = () => (
-  <header>
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/counter">Redux Counter</Link></li>
-        <li><Link to="/posts">GraphQl Blog</Link></li>
-      </ul>
-    </nav>
-  </header>
+const Navigation = props => (
+  <Navbar collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <Link to="/">
+          {props.title}
+        </Link>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+        {props.links.map(item => (
+          <LinkContainer key={item.id} to={item.href}>
+            <NavItem>{item.label}</NavItem>
+          </LinkContainer>
+        ))}
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
 )
 
-export default Header
+Navigation.propTypes = {
+  title: PropTypes.string.isRequired,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      href: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+}
+
+export default Navigation

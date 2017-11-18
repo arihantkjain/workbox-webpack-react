@@ -6,7 +6,26 @@ import { renderRoutes } from 'react-router-config'
 
 const App = ({ route }) => (
   <div>
-    <Header />
+    <Header
+      title="Boilerplate"
+      links={[
+        {
+          id: 1,
+          label: 'Home',
+          href: '/',
+        },
+        {
+          id: 2,
+          label: 'Redux Counter',
+          href: '/counter',
+        },
+        {
+          id: 3,
+          label: 'GraphQl Blog',
+          href: '/posts',
+        },
+      ]}
+    />
     {renderRoutes(route.routes)}
   </div>
 )

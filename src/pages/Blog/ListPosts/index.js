@@ -3,17 +3,21 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { compose } from 'recompose'
 import { graphql } from 'react-apollo'
+import { Grid, PageHeader } from 'react-bootstrap'
+import { Button } from 'components'
 import { showSpinnerWhileApolloLoading, showApolloError, showNoData } from 'common/helpers'
 import List from 'modules/blog/components/PostsList'
 import { queryAllPosts } from 'modules/blog/qql'
 
 
 export const ListPostsPage = ({ data: { allPosts } }) => (
-  <section>
-    <h2>All posts</h2>
-    <Link to="/posts/create">Create New Post</Link>
+  <Grid>
+    <PageHeader>All posts</PageHeader>
+    <Link to="/posts/create">
+      <Button bsStyle="primary">Create New Post</Button>
+    </Link>
     <List items={allPosts} />
-  </section>
+  </Grid>
 )
 
 ListPostsPage.propTypes = {
@@ -29,7 +33,6 @@ ListPostsPage.propTypes = {
   }).isRequired,
 }
 
-// TODO: Add no posts branch
 const enhance = compose(
   graphql(queryAllPosts),
   showApolloError(),
