@@ -1,14 +1,14 @@
-import webpack from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
-import path from 'path'
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import path from 'path';
 
-import dllManifest from '../public/vendor/vendor-manifest.json'
+import dllManifest from '../public/vendor/vendor-manifest.json';
 
 
-const DIST_DIR = 'public'
-const SRC_DIR = 'src'
+const DIST_DIR = 'public';
+const SRC_DIR = 'src';
 
 export default {
   output: {
@@ -43,6 +43,15 @@ export default {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -52,4 +61,4 @@ export default {
       './src',
     ],
   },
-}
+};

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import DummyImage from './dummy.png';
 
 
 const HomePage = () => (
@@ -9,7 +10,8 @@ const HomePage = () => (
       ullum consul. Te putant scripta albucius pri, vim oblique scriptorem in. Eos te mazim
       aliquip, ea erat utinam oblique cum, has simul scripta tractatos et.
     </p>
+    <img src={DummyImage} alt="dummy" />
   </section>
-)
+);
 
-export default HomePage
+export default HomePage;
