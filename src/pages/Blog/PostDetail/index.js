@@ -59,7 +59,7 @@ const enhance = compose(
   }),
   showApolloError(),
   showSpinnerWhileApolloLoading(),
-  showNoData(props => !props.data.Post),
+  showNoData(props => !props.data.Post)('Post does not exists.'),
 )
 
 export default enhance(PostDetailPage)

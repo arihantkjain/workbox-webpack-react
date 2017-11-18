@@ -1,12 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 
-const NoData = () => (
+const NoData = ({ message }) => (
   <div>
-    No data in database.
+    {message}
   </div>
 )
 
-NoData.propTypes = {}
+NoData.propTypes = {
+  message: PropTypes.string.isRequired,
+}
 
 export default NoData

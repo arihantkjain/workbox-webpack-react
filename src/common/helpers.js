@@ -1,3 +1,4 @@
+import React from 'react'
 import { branch, renderComponent } from 'recompose'
 import { Spinner, Error, NoData } from 'components'
 
@@ -20,8 +21,8 @@ export const showError = isError =>
 export const showApolloError = () =>
   showError(props => props.data.error)
 
-export const showNoData = isNoData =>
+export const showNoData = isNoData => (message = 'No data') =>
   branch(
     isNoData,
-    renderComponent(NoData),
+    renderComponent(() => <NoData message={message} />),
   )

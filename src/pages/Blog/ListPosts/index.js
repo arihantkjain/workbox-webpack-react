@@ -34,7 +34,7 @@ const enhance = compose(
   graphql(queryAllPosts),
   showApolloError(),
   showSpinnerWhileApolloLoading(),
-  showNoData(props => !props.data.allPosts),
+  showNoData(props => !props.data.allPosts)('There are no posts in database.'),
 )
 
 export default enhance(ListPostsPage)

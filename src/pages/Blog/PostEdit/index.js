@@ -55,7 +55,7 @@ const enhance = compose(
   }),
   showApolloError(),
   showSpinnerWhileApolloLoading(),
-  showNoData(props => !props.data.Post),
+  showNoData(props => !props.data.Post)('You can\'t edit post that does not exists.'),
 )
 
 export default enhance(PostEditPage)
