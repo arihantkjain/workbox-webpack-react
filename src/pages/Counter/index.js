@@ -9,9 +9,7 @@ export const CounterPage = ({ increment, decrement, counterValue }) => (
   <section>
     <h2>Redux Counter</h2>
     <p>
-      Lorem ipsum dolor sit amet, an eius aeque est, vel vidisse fuisset rationibus an. Eu nam
-      ullum consul. Te putant scripta albucius pri, vim oblique scriptorem in. Eos te mazim
-      aliquip, ea erat utinam oblique cum, has simul scripta tractatos et.
+      Minimal example redux implementation.
     </p>
     <p>
       Current counter value is: <strong>{counterValue}</strong>
