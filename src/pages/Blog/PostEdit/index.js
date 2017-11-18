@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import PropTypes from 'prop-types'
 import PostForm from 'modules/blog/forms/Post'
 import { compose, withHandlers } from 'recompose'
-import { queryPostDetail, updatePost } from 'modules/blog/qql'
+import { queryPostDetail, updatePost, queryAllPosts } from 'modules/blog/qql'
 import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 
 
@@ -46,7 +46,10 @@ const enhance = compose(
   withHandlers({
     handleOnSubmit: ({ history, updatePostMutation }) =>
       data =>
-        updatePostMutation({ variables: data })
+        updatePostMutation({
+          variables: data,
+          refetchQueries: [{ query: queryAllPosts }],
+        })
           .then(response => history.push(`/posts/${response.data.updatePost.id}`))
           .catch(() => global.alert('There was an error while updating your post.')),
   }),

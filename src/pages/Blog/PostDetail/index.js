@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { compose, withHandlers } from 'recompose'
 import { graphql } from 'react-apollo'
-import { queryPostDetail, deletePost } from 'modules/blog/qql'
+import { queryPostDetail, deletePost, queryAllPosts } from 'modules/blog/qql'
 import { Button } from 'components'
 import { showSpinnerWhileApolloLoading, showApolloError } from 'common/helpers'
 
@@ -50,7 +50,10 @@ const enhance = compose(
   withHandlers({
     handleDeletePost: ({ history, deletePostMutation, match }) =>
       () =>
-        deletePostMutation({ variables: { id: match.params.postId } })
+        deletePostMutation({
+          variables: { id: match.params.postId },
+          refetchQueries: [{ query: queryAllPosts }],
+        })
           .then(() => history.push('/posts'))
           .catch(() => global.alert('There was an error while deleting your post.')),
   }),

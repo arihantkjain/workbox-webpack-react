@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import PropTypes from 'prop-types'
 import PostForm from 'modules/blog/forms/Post'
 import { compose, withHandlers } from 'recompose'
-import { createPost } from 'modules/blog/qql'
+import { createPost, queryAllPosts } from 'modules/blog/qql'
 
 
 const PostCreatePage = ({ handleOnSubmit }) => (
@@ -26,7 +26,10 @@ const enhance = compose(
   withHandlers({
     handleOnSubmit: ({ history, mutate }) =>
       data =>
-        mutate({ variables: data })
+        mutate({
+          variables: data,
+          refetchQueries: [{ query: queryAllPosts }],
+        })
           .then(response => history.push(`/posts/${response.data.createPost.id}`))
           .catch(() => global.alert('There was an error while creating your post.')),
   }),
