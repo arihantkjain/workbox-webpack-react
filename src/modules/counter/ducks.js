@@ -6,7 +6,7 @@ export const initialState = {
 }
 
 export default (state = initialState, action) => {
-  const type = action.type
+  const { type } = action
 
   switch (type) {
     case INCREMENT_COUNTER: {
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
       }
     }
     default:
-      return state;
+      return state
   }
 }
 
