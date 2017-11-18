@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import nl2br from 'react-nl2br'
 import { Grid, PageHeader } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { compose, withHandlers } from 'recompose'
@@ -12,7 +13,7 @@ import { showSpinnerWhileApolloLoading, showApolloError, showNoData } from 'comm
 export const PostDetailPage = ({ match, handleDeletePost, data: { Post } }) => (
   <Grid>
     <PageHeader>{Post.title}</PageHeader>
-    <p>{Post.text}</p>
+    <p>{nl2br(Post.text)}</p>
     <Button bsStyle="danger" onClick={handleDeletePost}>Delete Post</Button>
     <Link to={`/posts/${match.params.postId}/edit`}><Button>Edit Post</Button></Link>
   </Grid>

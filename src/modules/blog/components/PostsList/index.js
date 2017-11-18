@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import nl2br from 'react-nl2br'
 import { Link } from 'react-router-dom'
 import { compose, withHandlers } from 'recompose'
 import { withApollo } from 'react-apollo'
@@ -12,7 +13,7 @@ export const PostListComponent = ({ items, handlePrefetchDetail }) => (
     {items.map(item => (
       <div key={item.id}>
         <h3>{item.title}</h3>
-        <p>{item.text}</p>
+        <p>{nl2br(item.text)}</p>
         <Link to={`/posts/${item.id}`}>
           <Button
             onFocus={handlePrefetchDetail(item.id)}
